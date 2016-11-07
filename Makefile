@@ -1,3 +1,5 @@
+# code written by Shaun Jackman @sjackman - extended to two parameter by Laura Gutierrez Funderburk @lfunderburk
+
 k=32
 s=500
 	
