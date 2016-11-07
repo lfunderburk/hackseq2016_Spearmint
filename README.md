@@ -2,7 +2,9 @@
 
 # Install Xcode
 
+```sh
 xcode-select --install
+```
 
 # Homebrew
 
@@ -43,7 +45,7 @@ pip install scipy
 ```
 
 # Run MongoDB
-
+In one terminal
 
 ```sh
 mkdir -p ~/work/spearmint
@@ -51,9 +53,11 @@ cd ~/work/spearmint
 mkdir mongodb
 mongod --logpath mongodb/mongod.log --dbpath mongodb
 ```
-
+leave running
 
 #Run Spearmint
+
+Open a second terminal
 
 ```sh
 python ~/%PATH_TO%/main.py ~/%PATH_TO_abyss.py%/
