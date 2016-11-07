@@ -1,0 +1,194 @@
+Job launching after 0.13 seconds in submission.
+Running python job.
+Changed into dir /home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint
+Importing abyss.py
+Running abyss.main()
+mkdir -p results/200k/k31/s2000
+abyss-pe -C results/200k/k31/s2000 name=hsapiens k=31 s=2000 in=/home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq
+make[1]: Entering directory `/home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/results/200k/k31/s2000'
+ABYSS -k31 -q3    --coverage-hist=coverage.hist -s hsapiens-bubbles.fa  -o hsapiens-1.fa /home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq 
+ABySS 2.0.1
+ABYSS -k31 -q3 --coverage-hist=coverage.hist -s hsapiens-bubbles.fa -o hsapiens-1.fa /home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq
+Reading `/home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq'...
+`/home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq': discarded 2410 reads shorter than 31 bases
+`/home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq': discarded 4131 reads containing non-ACGT characters
+Loaded 2921373 k-mer
+Minimum k-mer coverage is 8
+Using a coverage threshold of 6...
+The median k-mer coverage is 32
+The reconstruction is 213387
+The k-mer coverage threshold is 5.65685
+Setting parameter e (erode) to 6
+Setting parameter E (erodeStrand) to 1
+Setting parameter c (coverage) to 5.65685
+Generating adjacency
+Added 5677487 edges.
+Eroding tips
+Eroded 2706680 tips.
+Eroded 0 tips.
+Pruning tips shorter than 1 bp...
+Pruned 13 k-mer in 13 tips.
+Pruning tips shorter than 2 bp...
+Pruned 14 k-mer in 13 tips.
+Pruning tips shorter than 4 bp...
+Pruned 14 k-mer in 7 tips.
+Pruning tips shorter than 8 bp...
+Pruned 69 k-mer in 21 tips.
+Pruning tips shorter than 16 bp...
+Pruned 40 k-mer in 8 tips.
+Pruning tips shorter than 31 bp...
+Pruned 74 k-mer in 7 tips.
+Pruning tips shorter than 31 bp...
+Pruned 69 tips in 6 rounds.
+Marked 2325 edges of 1127 ambiguous vertices.
+Removing low-coverage contigs (mean k-mer coverage < 5.65685)
+Found 214403 k-mer in 1381 contigs before removing low-coverage contigs.
+Removed 5126 k-mer in 360 low-coverage contigs.
+Split 720 ambigiuous branches.
+Eroding tips
+Eroded 155 tips.
+Eroded 0 tips.
+Pruning tips shorter than 1 bp...
+Pruned 4 k-mer in 4 tips.
+Pruning tips shorter than 2 bp...
+Pruning tips shorter than 4 bp...
+Pruning tips shorter than 8 bp...
+Pruning tips shorter than 16 bp...
+Pruning tips shorter than 31 bp...
+Pruned 28 k-mer in 1 tips.
+Pruning tips shorter than 31 bp...
+Pruned 5 tips in 6 rounds.
+Popping bubbles
+Removed 0 bubbles
+Marked 1018 edges of 498 ambiguous vertices.
+Left 67 unassembled k-mer in circular contigs.
+Assembled 209089 k-mer in 542 contigs.
+Removed 2712217 k-mer.
+The signal-to-noise ratio (SNR) is -11.1285 dB.
+AdjList    -k31 -m50 --dot hsapiens-1.fa >hsapiens-1.dot
+abyss-filtergraph  --dot   -k31 -g hsapiens-2.dot1 hsapiens-1.dot hsapiens-1.fa >hsapiens-1.path
+MergeContigs   -k31 -g hsapiens-2.dot -o hsapiens-2.fa hsapiens-1.fa hsapiens-2.dot1 hsapiens-1.path
+PopBubbles  --dot -j2 -k31  -p0.9  -g hsapiens-3.dot hsapiens-2.fa hsapiens-2.dot >hsapiens-2.path
+MergeContigs   -k31 -o hsapiens-3.fa hsapiens-2.fa hsapiens-2.dot hsapiens-2.path
+The minimum coverage of single-end contigs is 6.
+The minimum coverage of merged contigs is 16.1224.
+Consider increasing the coverage threshold parameter, c, to 16.1224.
+awk '!/^>/ {x[">" $1]=1; next} {getline s} $1 in x {print $0 "\n" s}' \
+		hsapiens-2.path hsapiens-1.fa >hsapiens-indel.fa
+ln -sf hsapiens-3.fa hsapiens-unitigs.fa
+abyss-map   -j2 -l40    /home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq hsapiens-3.fa \
+		|abyss-fixmate   -l40  -h hsapiens-3.hist \
+		|sort -snk3 -k4 \
+		|DistanceEst   -j2 -k31 -l40 -s2000 -n10   -o hsapiens-3.dist hsapiens-3.hist
+Building the suffix array...
+Building the Burrows-Wheeler transform...
+Building the character occurrence table...
+Mateless        0
+Unaligned   61829  24.7%
+Singleton   36556  14.6%
+FR         138788  55.5%
+RF              0
+FF             27  0.0108%
+Different   12800  5.12%
+Total      250000
+Overlap  --dot   -k31 -g hsapiens-4.dot -o hsapiens-4.fa hsapiens-3.fa hsapiens-3.dot hsapiens-3.dist
+Overlap: 1
+Scaffold: 1
+No overlap: 1
+Insignificant (<5bp): 0
+Homopolymer: 1
+Motif: 0
+Ambiguous: 0
+SimpleGraph    -j2 -k31 -o hsapiens-4.path1 hsapiens-4.dot hsapiens-3.dist
+Total paths attempted: 65
+Unique path: 52
+No possible paths: 4
+No valid paths: 1
+Repetitive: 0
+Multiple valid paths: 8
+Too many solutions: 0
+Too complex: 0
+
+The minimum number of pairs in a distance estimate is 10.
+The minimum number of pairs used in a path is 10.
+abyss-index  --fai hsapiens-3.fa
+Reading `hsapiens-3.fa'...
+Writing `hsapiens-3.fa.fai'...
+abyss-index  --fai hsapiens-4.fa
+Reading `hsapiens-4.fa'...
+Writing `hsapiens-4.fa.fai'...
+cat hsapiens-3.fa.fai hsapiens-4.fa.fai \
+		|MergePaths   -j2 -k31  -o hsapiens-4.path2 - hsapiens-4.path1
+PathOverlap --assemble   -k31  hsapiens-4.dot hsapiens-4.path2 >hsapiens-4.path3
+cat hsapiens-3.fa hsapiens-4.fa \
+		|PathConsensus  --dot -k31  -p0.9  -o hsapiens-5.path -s hsapiens-5.fa -g hsapiens-5.dot - hsapiens-4.dot hsapiens-4.path3
+Ambiguous paths: 7
+Merged:          1
+No paths:        0
+Too many paths:  3
+Too complex:     0
+Dissimilar:      3
+cat hsapiens-3.fa hsapiens-4.fa hsapiens-5.fa |MergeContigs   -k31 -o hsapiens-6.fa - hsapiens-5.dot hsapiens-5.path
+The minimum coverage of single-end contigs is 6.
+The minimum coverage of merged contigs is 6.9375.
+Consider increasing the coverage threshold parameter, c, to 6.9375.
+ln -sf hsapiens-6.fa hsapiens-contigs.fa
+PathOverlap --overlap   -k31 --dot hsapiens-5.dot hsapiens-5.path >hsapiens-6.dot
+ln -sf hsapiens-6.dot hsapiens-contigs.dot
+abyss-map   -j2 -l40    /home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/data/200k.fq hsapiens-6.fa \
+		|abyss-fixmate   -l40  -h hsapiens-6.hist \
+		|sort -snk3 -k4 \
+		|DistanceEst --dot --mean   -j2 -k31 -l40 -s2000 -n10   -o hsapiens-6.dist.dot hsapiens-6.hist
+Building the suffix array...
+Building the Burrows-Wheeler transform...
+Building the character occurrence table...
+Mateless        0
+Unaligned   61597  24.6%
+Singleton   35525  14.2%
+FR         144259  57.7%
+RF              2  0.0008%
+FF             34  0.0136%
+Different    8583  3.43%
+Total      250000
+abyss-scaffold    -k31 -s1000-10000 -n10 -g hsapiens-6.path.dot  hsapiens-6.dot hsapiens-6.dist.dot >hsapiens-6.path
+warning: Removed 8 invalid edges.
+n	n:1000	L50	min	N80	N50	N20	E-size	max	sum	name
+174	28	6	1330	6184	12444	22769	12515	23760	192048	s=1000
+183	37	6	1176	3437	8575	22769	11390	23760	192275	s=2000
+186	40	7	1176	3437	7640	22769	10484	23760	192693	s=5000
+188	42	9	1176	3437	7200	14869	8622	23760	192693	s=10000
+n	n:1000	L50	min	N80	N50	N20	E-size	max	sum	name
+174	28	6	1330	6184	12444	22769	12515	23760	192048	s=1000
+Best scaffold N50 is 12444 at s=1000.
+PathConsensus  --dot -k31  -p0.9  -s hsapiens-7.fa -g hsapiens-7.dot -o hsapiens-7.path hsapiens-6.fa hsapiens-6.dot hsapiens-6.path
+Ambiguous paths: 12
+Merged:          2
+No paths:        10
+Too many paths:  0
+Too complex:     0
+Dissimilar:      0
+cat hsapiens-6.fa hsapiens-7.fa \
+		|MergeContigs   -k31 -o hsapiens-8.fa - hsapiens-7.dot hsapiens-7.path
+The minimum coverage of single-end contigs is 6.
+The minimum coverage of merged contigs is 28.6.
+Consider increasing the coverage threshold parameter, c, to 28.6.
+ln -sf hsapiens-8.fa hsapiens-scaffolds.fa
+PathOverlap --overlap   -k31 --dot hsapiens-7.dot hsapiens-7.path >hsapiens-8.dot
+ln -sf hsapiens-8.dot hsapiens-scaffolds.dot
+abyss-fac   hsapiens-unitigs.fa hsapiens-contigs.fa hsapiens-scaffolds.fa |tee hsapiens-stats.tab
+n	n:500	L50	min	N80	N50	N20	E-size	max	sum	name
+369	78	17	503	1804	3257	7433	4370	10589	196381	hsapiens-unitigs.fa
+188	56	10	503	2472	6900	10589	8206	23760	203497	hsapiens-contigs.fa
+172	42	6	503	6116	12520	22769	11900	23760	203103	hsapiens-scaffolds.fa
+ln -sf hsapiens-stats.tab hsapiens-stats
+tr '\t' , <hsapiens-stats.tab >hsapiens-stats.csv
+abyss-tabtomd hsapiens-stats.tab >hsapiens-stats.md
+make[1]: Leaving directory `/home/laura/github-hackseq-project2/2016_project_2/scripts/spearmint/results/200k/k31/s2000'
+abyss-fac results/200k/k31/s2000/hsapiens-scaffolds.fa >results/200k/k31/s2000/hsapiens-scaffolds.fac.tsv
+mlr --tsvlite cat results/200k/k16/s200/hsapiens-scaffolds.fac.tsv results/200k/k17/s2000/hsapiens-scaffolds.fac.tsv results/200k/k22/s200/hsapiens-scaffolds.fac.tsv results/200k/k29/s290/hsapiens-scaffolds.fac.tsv results/200k/k30/s1100/hsapiens-scaffolds.fac.tsv results/200k/k32/s200/hsapiens-scaffolds.fac.tsv results/200k/k37/s2000/hsapiens-scaffolds.fac.tsv results/200k/k37/s200/hsapiens-scaffolds.fac.tsv results/200k/k45/s2000/hsapiens-scaffolds.fac.tsv results/200k/k45/s200/hsapiens-scaffolds.fac.tsv results/200k/k45/s245/hsapiens-scaffolds.fac.tsv results/200k/k31/s2000/hsapiens-scaffolds.fac.tsv >results/200k.fac.tsv
+zsh:1: command not found: mlr
+make: *** [results/200k.fac.tsv] Error 127
+make: *** Deleting file `results/200k.fac.tsv'
+Got result -12520
+Completed successfully in 55.02 seconds. [{u'main': -12520}]
+k=31	s=2000	N50=12520
