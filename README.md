@@ -20,6 +20,8 @@ Copy and paste the following in your terminal
 
 # Linuxbrew for Ubuntu
 
+[Linuxbrew page](http://linuxbrew.sh/)
+
 Copy and paste the following in your terminal
 
 ```sh
