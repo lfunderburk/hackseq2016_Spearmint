@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # Run ABySS for Spearmint
 # Code written by Shaun Jackman @sjackman - extended to two parameters by Laura Gutierrez Funderburk
+# config.json file written by Shaun Jackman @sjackman - extended to two parameter by Laura Gutierrez Funderburk
 
 import csv
 import os
