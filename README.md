@@ -12,17 +12,21 @@ xcode-select --install
 
 # Homebrew for MacOS X
 
+Copy and paste the following in your terminal
+
 ```sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 # Linuxbrew for Ubuntu
 
+Copy and paste the following in your terminal
+
 ```sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 ```
 
-# add brew command to your $PATH
+add brew command to your $PATH
 
 ```sh
 PATH=~/.linuxbrew/bin:$PATH
