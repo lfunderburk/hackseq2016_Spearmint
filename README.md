@@ -30,7 +30,7 @@ PATH=~/.linuxbrew/bin:$PATH
 
 [Spearmint on GitHub](https://github.com/HIPS/Spearmint)
 
-# Install Spearmint
+# Install Spearmint and MongoDB
 
 ```sh
 mkdir ~/src
