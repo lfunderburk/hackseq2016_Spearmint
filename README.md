@@ -56,6 +56,6 @@ mongod --logpath mongodb/mongod.log --dbpath mongodb
 #Run Spearmint
 
 ```sh
-python ~/%PATH_TO%/main.py ~/%PATH_TO_CODE%/
+python ~/%PATH_TO%/main.py ~/%PATH_TO_abyss.py%/
 ls ~/%PATH_TO_OUTPUT%/output
 ```
